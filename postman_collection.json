@@ -1,0 +1,173 @@
+{
+	"info": {
+		"_postman_id": "ac04d373-d37c-48e5-b0c9-e5d3380150e6",
+		"name": "Lumen Redisearch Example",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Products",
+			"description": "",
+			"item": [
+				{
+					"name": "Products",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://lumen-redisearch.ved/products",
+							"protocol": "http",
+							"host": [
+								"lumen-redisearch",
+								"ved"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Products (Search)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://lumen-redisearch.ved/products?q=nihil",
+							"protocol": "http",
+							"host": [
+								"lumen-redisearch",
+								"ved"
+							],
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "nihil"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://lumen-redisearch.ved/products/1",
+							"protocol": "http",
+							"host": [
+								"lumen-redisearch",
+								"ved"
+							],
+							"path": [
+								"products",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product Suggestion",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://lumen-redisearch.ved/products/suggestion",
+							"protocol": "http",
+							"host": [
+								"lumen-redisearch",
+								"ved"
+							],
+							"path": [
+								"products",
+								"suggestion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://lumen-redisearch.ved/products",
+							"protocol": "http",
+							"host": [
+								"lumen-redisearch",
+								"ved"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Home",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://lumen-redisearch.ved/",
+					"protocol": "http",
+					"host": [
+						"lumen-redisearch",
+						"ved"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
