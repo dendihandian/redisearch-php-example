@@ -15,6 +15,7 @@ use Ehann\RedisRaw\PredisAdapter;
 use Ehann\RediSearch\Index;
 use Ehann\RediSearch\Fields\TextField;
 use Ehann\RediSearch\Fields\NumericField;
+use Ehann\RediSearch\Suggestion;
 
 $factory->define(App\Models\Product::class, function (Faker\Generator $faker) {
 
@@ -45,6 +46,10 @@ $factory->define(App\Models\Product::class, function (Faker\Generator $faker) {
         new NumericField('price', $price),
         new TextField('description', $description),
     ]);
+
+    // create suggestion index
+    $productSuggestionIndex = new Suggestion($redis, \App\Models\Product::INDEX);
+    $productSuggestionIndex->add($name, 1.0);
 
     // insert to database
     return [
