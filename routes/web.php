@@ -20,3 +20,4 @@ $router->post('products', 'ProductsController@store');
 $router->get('products/{id}', 'ProductsController@show');
 $router->patch('products{id}', 'ProductsController@update');
 $router->delete('products/{id}', 'ProductsController@destroy');
+$router->get('products/suggestion', 'ProductsController@suggestion');

@@ -7,6 +7,7 @@ use Ehann\RedisRaw\PredisAdapter;
 use Ehann\RediSearch\Index;
 use Ehann\RediSearch\Fields\TextField;
 use Ehann\RediSearch\Fields\NumericField;
+use Ehann\RediSearch\Suggestion;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
@@ -75,5 +76,24 @@ class ProductsController extends Controller
         $product = Product::findOrFail($id);
         $product->delete();
         return response()->json([], 200);
+    }
+
+    public function suggestion(Request $request)
+    {
+        if ($request->has('q')) {
+            if (!empty($q = $request->get('q'))) {
+
+                $suggestionIndex = new Suggestion($this->adapter, Product::INDEX);
+
+                $result = [
+                    'suggestions' => $suggestionIndex->get($q),
+                ];
+
+                return response()->json($result, 200);
+
+            }
+        }
+
+        return response()->json(['suggestions' => []], 200);
     }
 }
