@@ -103,7 +103,7 @@
 						],
 						"body": {},
 						"url": {
-							"raw": "http://lumen-redisearch.ved/products/suggestion",
+							"raw": "http://lumen-redisearch.ved/products/suggestion?q=iusto",
 							"protocol": "http",
 							"host": [
 								"lumen-redisearch",
@@ -112,6 +112,12 @@
 							"path": [
 								"products",
 								"suggestion"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "iusto"
+								}
 							]
 						}
 					},
