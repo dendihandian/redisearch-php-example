@@ -103,7 +103,7 @@
 						],
 						"body": {},
 						"url": {
-							"raw": "http://lumen-redisearch.ved/products/suggestion?q=iusto",
+							"raw": "http://lumen-redisearch.ved/products/suggestion?q=e",
 							"protocol": "http",
 							"host": [
 								"lumen-redisearch",
@@ -116,7 +116,7 @@
 							"query": [
 								{
 									"key": "q",
-									"value": "iusto"
+									"value": "e"
 								}
 							]
 						}
@@ -133,7 +133,10 @@
 								"value": "application/json"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"A Very Fresh Milk\",\n\t\"stock\": 4,\n\t\"price\": 90,\n\t\"description\": \"Good for your height.\\nGood for your bone.\\nGood for your health.\"\n}"
+						},
 						"url": {
 							"raw": "http://lumen-redisearch.ved/products",
 							"protocol": "http",
@@ -143,6 +146,64 @@
 							],
 							"path": [
 								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"A Fresh Milk\",\n\t\"stock\": 2,\n\t\"price\": 85,\n\t\"description\": \"Good for your height.\\nGood for your bone.\"\n}"
+						},
+						"url": {
+							"raw": "http://lumen-redisearch.ved/products/1",
+							"protocol": "http",
+							"host": [
+								"lumen-redisearch",
+								"ved"
+							],
+							"path": [
+								"products",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://lumen-redisearch.ved/products/10",
+							"protocol": "http",
+							"host": [
+								"lumen-redisearch",
+								"ved"
+							],
+							"path": [
+								"products",
+								"10"
 							]
 						}
 					},

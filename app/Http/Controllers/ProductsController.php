@@ -63,12 +63,32 @@ class ProductsController extends Controller
 
     public function store(Request $request)
     {
-        return response()->json([], 201);
+        $input = $request->all();
+
+        $product = new Product;
+        $product->name = $input['name'];
+        $product->slug = str_slug($input['name']);
+        $product->stock = $input['stock'];
+        $product->price = $input['price'];
+        $product->description = $input['description'];
+        $product->save();
+
+        return response()->json($product, 201);
     }
 
     public function update(Request $request, $id)
     {
-        return response()->json([], 200);
+        $input = $request->all();
+
+        $product = Product::findOrFail($id);
+        $product->name = $input['name'];
+        $product->slug = str_slug($input['name']);
+        $product->stock = $input['stock'];
+        $product->price = $input['price'];
+        $product->description = $input['description'];
+        $product->save();
+
+        return response()->json($product, 200);
     }
 
     public function destroy($id)
