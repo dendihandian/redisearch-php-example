@@ -11,12 +11,6 @@
 |
 */
 
-use Ehann\RedisRaw\PredisAdapter;
-use Ehann\RediSearch\Index;
-use Ehann\RediSearch\Fields\TextField;
-use Ehann\RediSearch\Fields\NumericField;
-use Ehann\RediSearch\Suggestion;
-
 $factory->define(App\Models\Product::class, function (Faker\Generator $faker) {
 
     // generate dummies
@@ -25,31 +19,6 @@ $factory->define(App\Models\Product::class, function (Faker\Generator $faker) {
     $stock = rand(1,10);
     $price = rand(10,100);
     $description = $faker->paragraphs($nb = 3, $asText = true);
-
-    // create redis adapter instance
-    $redis = (new PredisAdapter())->connect(env('REDIS_HOST'), env('REDIS_PORT'));
-
-    // create product index
-    $productIndex = new Index($redis);
-    $productIndex->addTextField('name')
-        ->addTextField('slug')
-        ->addNumericField('stock')
-        ->addNumericField('price')
-        ->addTextField('description')
-        ->create();
-
-    // insert to redis
-    $productIndex->add([
-        new TextField('name', $name),
-        new TextField('slug', $slug),
-        new NumericField('stock', $stock),
-        new NumericField('price', $price),
-        new TextField('description', $description),
-    ]);
-
-    // create suggestion index
-    $productSuggestionIndex = new Suggestion($redis, \App\Models\Product::INDEX);
-    $productSuggestionIndex->add($name, 1.0);
 
     // insert to database
     return [
