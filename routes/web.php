@@ -16,10 +16,15 @@ $router->get('/', function () use ($router) {
 });
 
 $router->group(['prefix' => 'products'], function ($router) {
-  $router->get('suggestion', 'ProductsController@suggestion');
-  $router->get('/', 'ProductsController@index');
-  $router->post('/', 'ProductsController@store');
-  $router->get('/{id}', 'ProductsController@show');
-  $router->patch('/{id}', 'ProductsController@update');
-  $router->delete('/{id}', 'ProductsController@destroy');
+    $router->get('suggestion', 'ProductsController@suggestion');
+
+    $router->get('/', 'ProductsController@index');
+    $router->post('/', 'ProductsController@store');
+    $router->get('/{id}', 'ProductsController@show');
+    $router->patch('/{id}', 'ProductsController@update');
+    $router->delete('/{id}', 'ProductsController@destroy');
+
+    $router->group(['prefix' => 'aggregations'], function ($router) {
+        $router->get('/average/{field}', 'ProductsController@average');
+    });
 });

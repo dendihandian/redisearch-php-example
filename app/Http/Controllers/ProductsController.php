@@ -116,4 +116,16 @@ class ProductsController extends Controller
 
         return response()->json(['suggestions' => []], 200);
     }
+
+    public function average(Request $request, $field)
+    {
+        // seems the aggregation is not working ... (in progress)
+        $results = $this->index->makeAggregateBuilder()
+          ->groupBy('name')
+          ->avg('price');
+
+        dd($results);
+
+        return response()->json($results, 200);
+    }
 }

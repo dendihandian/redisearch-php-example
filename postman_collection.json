@@ -10,6 +10,41 @@
 			"description": "",
 			"item": [
 				{
+					"name": "Aggregations",
+					"description": "",
+					"item": [
+						{
+							"name": "Price Average",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://lumen-redisearch.ved/products/aggregations/average/price",
+									"protocol": "http",
+									"host": [
+										"lumen-redisearch",
+										"ved"
+									],
+									"path": [
+										"products",
+										"aggregations",
+										"average",
+										"price"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
 					"name": "Products",
 					"request": {
 						"method": "GET",
