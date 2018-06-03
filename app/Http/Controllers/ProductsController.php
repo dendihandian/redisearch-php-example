@@ -34,19 +34,29 @@ class ProductsController extends Controller
 
     public function index(Request $request)
     {
-        if ($request->has('q')) {
-            if (!empty($q = $request->get('q'))) {
-                $result = $this->index->search($q);
-                $result = [
-                    'count' => $result->getCount(),
-                    'documents' => $result->getDocuments(),
-                ];
-                return response()->json($result, 200);
+        if ($request->has('q') && !empty($q = $request->get('q'))) {
+
+            // seems the sortBy is not working (in progress)
+            if ($request->has('sortBy') && !empty($sortBy = $request->get('sortBy'))) {
+                $this->index->sortBy($sortBy);
             }
+
+            // perform the search
+            $result = $this->index->search($q);
+
+            // prepare the result
+            $result = [
+                'count' => $result->getCount(),
+                'documents' => $result->getDocuments(),
+            ];
+
+            return response()->json($result, 200);
         }
 
+        // get all products
         $products = Product::all();
 
+        // prepare the result
         $result = [
             'count' => $products->count(),
             'documents' => $products->toArray(),
@@ -100,18 +110,17 @@ class ProductsController extends Controller
 
     public function suggestion(Request $request)
     {
-        if ($request->has('q')) {
-            if (!empty($q = $request->get('q'))) {
+        if ($request->has('q') && !empty($q = $request->get('q'))) {
 
-                $suggestionIndex = new Suggestion($this->adapter, Product::INDEX);
+            // create suggestion index
+            $suggestionIndex = new Suggestion($this->adapter, Product::INDEX);
 
-                $result = [
-                    'suggestions' => $suggestionIndex->get($q),
-                ];
+            // prepare the result
+            $result = [
+                'suggestions' => $suggestionIndex->get($q),
+            ];
 
-                return response()->json($result, 200);
-
-            }
+            return response()->json($result, 200);
         }
 
         return response()->json(['suggestions' => []], 200);

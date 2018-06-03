@@ -101,6 +101,41 @@
 					"response": []
 				},
 				{
+					"name": "Products (Search & Sort)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://lumen-redisearch.ved/products?q=nihil&sortBy=price",
+							"protocol": "http",
+							"host": [
+								"lumen-redisearch",
+								"ved"
+							],
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "nihil"
+								},
+								{
+									"key": "sortBy",
+									"value": "price"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Product",
 					"request": {
 						"method": "GET",
